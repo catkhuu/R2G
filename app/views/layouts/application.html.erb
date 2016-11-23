@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Run2gether</title>
+    <title>R2G</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   </head>
 
   <body>
+    <ul id="slide-out" class="side-nav">
+    <li><div class="userView">
+      <div class="background">
+        <img src="">
+      </div>
+    <% if logged_in? %>
+      <a href="#!user"><img class="circle" src=""></a>
+      <p><%= current_user.name %></p>
+      <p><%= current_user.email %></p>
+    </div></li>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "The Rundown", user_path(current_user) %></li>
+      <li><%= link_to "Logout", session_path(current_user), method: :delete %></li>
+      <li><div class="divider"></div></li>
+    <% else %>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Register", new_user_path %></li>
+      <li><%= link_to "Login", new_session_path %></li>
+    <% end %>
+
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
     <%= yield %>
   </body>
 </html>
