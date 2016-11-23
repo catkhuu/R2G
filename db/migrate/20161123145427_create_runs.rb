@@ -6,6 +6,7 @@ class CreateRuns < ActiveRecord::Migration[5.0]
       t.time    :run_pace, null: false
       t.references :user, null: false
       t.references :companion
+      t.boolean    :is_solo, default: true
       t.timestamps(null: false)
     end
   end

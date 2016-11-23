@@ -38,13 +38,14 @@ ActiveRecord::Schema.define(version: 20161123150829) do
   end
 
   create_table "runs", force: :cascade do |t|
-    t.float    "distance",     null: false
-    t.time     "run_time",     null: false
-    t.time     "run_pace",     null: false
-    t.integer  "user_id",      null: false
+    t.float    "distance",                    null: false
+    t.time     "run_time",                    null: false
+    t.time     "run_pace",                    null: false
+    t.integer  "user_id",                     null: false
     t.integer  "companion_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.boolean  "is_solo",      default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["companion_id"], name: "index_runs_on_companion_id", using: :btree
     t.index ["user_id"], name: "index_runs_on_user_id", using: :btree
   end
