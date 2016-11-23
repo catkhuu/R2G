@@ -1,6 +1,7 @@
 class CreateMoods < ActiveRecord::Migration[5.0]
   def change
     create_table :moods do |t|
+      t.string :name, null: false
       t.time  :mood_pace
       t.string :mood_experience
       t.float  :desired_distance
