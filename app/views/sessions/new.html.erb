@@ -1,0 +1,12 @@
+<div class="container">
+<h1>Login</h1>
+
+<%= form_for :sessions, url: sessions_path do |f| %>
+  Email: <%= f.text_field :email %>
+  Password: <%= f.password_field :password %>
+  <%= f.submit 'Login', :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
+<% end %>
+</div>
+<div class= "container">
+  <p> New user? <%= link_to "Sign up now!", new_user_path %></p>
+</div>

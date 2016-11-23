@@ -1,0 +1,16 @@
+
+<div class="container">
+  <h1>Create an Account</h1>
+  <%= form_for @user do |f| %>
+    Name: <%= f.text_field :name, placeholder:"My friends call me..." %>
+    Email: <%= f.text_field :email, placeholder: "Contact me at..."%>
+    Zip Code: <%= f.text_field :location, placeholder: "Where I run..."%>
+    Password: <%= f.password_field :password, placeholder: "Password" %>
+    Confirm Password: <%= f.password_field :password_confirmation, placeholder: "One more time..." %>
+    <%= f.submit "Sign Up", :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
+
+  <% end %>
+</div>
+<div class= "container">
+  <p> Already have an account? <%= link_to "Login here!", new_session_path%></p>
+</div>
