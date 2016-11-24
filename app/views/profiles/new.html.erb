@@ -5,7 +5,7 @@
     Average Pace: <%= f.text_field :user_pace, placeholder: "Please tell us your average pace (minutes per mile)"%>
     Goals: <%= f.text_field :goals, placeholder: "In a few words, tell us your running goals!"%>
     Experience Level: <br /><br />
-      <%= select_tag(:experience, options_for_select([['Beginner', 1], ['Intermediate', 2], ['Advanced', 3], ['Competitive', 4]])) %>
+      <%= f.select :experience, ['Beginner', 'Intermediate', 'Advanced', 'Competitive'] %>
     <br />
 
     Need To Knows: <%= f.text_field :need_to_knows, placeholder: "Is there anything important you'd want a potential running partner to know (i.e. injuries, allergies, etc.)" %>
