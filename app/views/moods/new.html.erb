@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>How ya feelin?</h1>
+  <h4>Create a mood profile so we can find you matches!</h4>
+  <%= form_for :mood, url: {action: "create"} do |f| %>
+    Mood: <%= f.text_field :name, placeholder:"Save this mood name as..." %>
+    Approximate Pace: (e.g. 8:30): <%= f.text_field :mood_pace, placeholder:"Pace range..." %>
+    Distance: <%= f.text_field :desired_distance, placeholder:"How many miles..." %>
+    Experience: <%= f.select :mood_experience, ['Beginner', 'Intermediate','Advanced', 'Competitive'] %>
+    <%= f.submit "Save Mood", :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
+  <% end %>
+</div>
+<div class= "container">
+
+</div>
