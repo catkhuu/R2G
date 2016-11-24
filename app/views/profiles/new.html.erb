@@ -1,0 +1,17 @@
+<div class="container">
+  <h1><%=current_user.name%>'s Profile</h1>
+  <%= form_for :profile, url: { action: "create" } do |f| %>
+    Why I Run: <%= f.text_field :why_i_run, placeholder:"In a few words, tell us what motivates you and keeps you running!" %>
+    Average Pace: <%= f.text_field :user_pace, placeholder: "Please tell us your average pace (minutes per mile)"%>
+    Goals: <%= f.text_field :goals, placeholder: "In a few words, tell us your running goals!"%>
+    Experience Level: <br /><br />
+      <%= select_tag(:experience, options_for_select([['Beginner', 1], ['Intermediate', 2], ['Advanced', 3], ['Competitive', 4]])) %>
+    <br />
+
+    Need To Knows: <%= f.text_field :need_to_knows, placeholder: "Is there anything important you'd want a potential running partner to know (i.e. injuries, allergies, etc.)" %>
+    <%= f.submit "Create Profile", :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
+
+  <% end %>
+</div>
+
+

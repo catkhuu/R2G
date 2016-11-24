@@ -17,6 +17,6 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:why_i_run, :)
+      params.require(:profile).permit(:why_i_run, :user_pace, :goals, :experience, :need_to_knows)
     end
 end
