@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -10,13 +9,13 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
+      flash[:danger] = 'Invalid email or password'
       render 'new'
     end
   end
 
   def destroy
-    session.destroy
+    session.clear
     redirect_to root_path
   end
-
 end
