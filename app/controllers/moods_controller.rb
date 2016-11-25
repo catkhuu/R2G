@@ -2,7 +2,7 @@ class MoodsController < ApplicationController
   before_action :sanitize_mood_pace, only: [:create, :edit]
 
   def index
-    @mood = Mood.all
+    @moods = current_user.moods.all
   end
 
   def new
@@ -14,7 +14,7 @@ class MoodsController < ApplicationController
     @mood.user = current_user
 
     if @mood.save
-      redirect_to '/'
+      redirect_to user_moods_path(@mood.user)
     else
       render 'new'
     end
@@ -26,6 +26,13 @@ class MoodsController < ApplicationController
 
   def update
 
+  end
+
+  def destroy
+    @mood = Mood.find(params[:id])
+    @mood.destroy
+
+    redirect_to user_moods_path(@mood.user)
   end
 
   private
