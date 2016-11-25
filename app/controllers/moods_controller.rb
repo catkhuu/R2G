@@ -21,7 +21,7 @@ class MoodsController < ApplicationController
   end
 
   def edit
-    find_user
+
   end
 
   def update
