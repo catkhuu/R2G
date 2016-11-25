@@ -1,4 +1,4 @@
-require 'unirest'
+# require 'unirest'
 class UsersController < ApplicationController
     before_action :geocode_zip, only: [:create, :update]
     before_action :logged_in_user, :find_and_ensure_user, only: [:show, :edit, :update]
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to user_path(user)
+      redirect_to new_user_profile_path(user)
     else
       @errors = user.errors.full_messages
       render 'new'
