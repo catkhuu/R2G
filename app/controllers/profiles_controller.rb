@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    debugger
+    # debugger
     # @profile.user = current_user
     if @profile.save
       redirect_to user_profile_path(current_user, @profile)
@@ -21,9 +21,17 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @profile = Profile.find_by(user_id:[current_user.id])
   end
 
   def update
+    # debugger
+    @profile = Profile.find_by(user_id:[current_user.id])
+    if @profile.update(profile_params)
+      redirect_to user_profile_path(@profile.user_id, @profile)
+    else
+      render 'edit'
+    end
   end
 
   private

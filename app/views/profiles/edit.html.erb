@@ -1,0 +1,13 @@
+<h2> Edit Your Profile: </h2>
+<div class="container">
+  <%= form_for :profile, url: user_profile_path(@profile.user_id, @profile), method: 'put' do |f| %>
+    Why I Run: <%= f.text_field :why_i_run%>
+    Average Pace: <%= f.text_field :user_pace%>
+    Goals: <%= f.text_field :goals%>
+    Experience Level: <br /><br />
+      <%= f.select :experience, ['Beginner', 'Intermediate', 'Advanced', 'Competitive'] %>
+    <br />
+    Need To Knows: <%= f.text_field :need_to_knows%>
+    <%= f.submit "Update Profile", :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
+  <% end %>
+</div>
