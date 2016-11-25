@@ -1,7 +1,15 @@
-<h1><%= "#{@user.name}'s Profile" %></h1>
+<h1>The Rundown</h1>
 
 <!-- This is a place holder to make navigation easier for us, it will NOT look like this eventually  -->
 
 <%= link_to "View Profile", user_profile_path(@user, @user.profile) %>
 <br>
 <%= link_to "Running Moods", user_moods_path(@user) %>
+
+<%= render 'map' %>
+
+<%= render 'run_button' %>
+
+<%= render 'past_runs' %>
+
+

@@ -1,0 +1,27 @@
+<h3> Past Run Stats: </h3>
+<% if @user.runs.any? %>
+  <h3 class='center'> Past Run Stats: </h3>
+  <div class = 'container'>
+    <table class='responsive-table highlight bordered'>
+      <tr>
+        <th>Run Date</th>
+        <th>Total Distance</th>
+        <th>Companion</th>
+        <th>Average Pace</th>
+      </tr>
+      <% @user.runs.each do |run| %>
+      <tr>
+        <td><%= run.created_at %></td>
+        <td><%= run.distance %></td>
+        <% if run.companion %>
+          <td>Companion: <%= run.companion.name %></td>
+        <% else %>
+          <td> Solo Run </td>
+        <% end %>
+        <td><%= run.run_pace %></td>
+      <% end %>
+    </table>
+  </div>
+<% else %>
+  <p> You haven't had any runs yet! </p>
+<% end %>
