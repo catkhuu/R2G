@@ -1,13 +1,15 @@
 class CreateRuns < ActiveRecord::Migration[5.0]
   def change
     create_table :runs do |t|
-      t.float   :distance, null: false
-      t.time    :run_time, null: false
-      t.time    :run_pace, null: false
+      t.float   :distance
+      t.time    :run_time
+      t.time    :run_pace
       t.references :runner, null: false
       t.references :companion
-      t.boolean    :is_solo, default: true
-      t.boolean    :is_complete, default: false
+      t.string   :run_date, null: false
+      t.integer     :time, null: false
+      t.integer    :zipcode
+      t.references  :mood
       t.timestamps(null: false)
     end
   end

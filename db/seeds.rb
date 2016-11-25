@@ -33,19 +33,7 @@ def converted_pace(seconds, distance)
   Time.at(pace_seconds).utc.strftime('%H:%M:%S')
 end
 
-Run.create!(distance: 3.75, run_time: more_time, run_pace: converted_pace(even_more_seconds, 3.75), runner_id: 1, is_complete: true)
-
-even_more_time = 3600
-cat_time = Time.at(even_more_time).utc.strftime('%H:%M:%S')
-
-Run.create!(distance: 9.08, run_time: cat_time, run_pace: converted_pace(even_more_time, 9.08), runner_id: 2, companion_id: 3, is_solo: false, is_complete: true)
-
-miles_seconds = 3720
-miles_time = Time.at(miles_seconds).utc.strftime('%H:%M:%S')
-
-Run.create!(distance: 9.5, run_time: miles_time, run_pace: converted_pace(miles_seconds, 9.5), runner_id: 3, companion_id: 2, is_solo: false, is_complete: true)
-
-the_seconds = 900
-overall_time = Time.at(the_seconds).utc.strftime('%H:%M:%S')
-
-Run.create!(distance: 3, run_time: overall_time, run_pace: converted_pace(the_seconds, 3), runner_id: 4)
+Run.create!(runner_id: 1, run_date: "30 November, 2016", time: 43200, zipcode: 10004)
+Run.create!(runner_id: 2, run_date: "29 November, 2016", time: 48000, zipcode: 10004)
+Run.create!(runner_id: 3, run_date: "29 November, 2016", time: 48000, zipcode: 10004)
+Run.create!(runner_id: 4, run_date: "28 November, 2016", time: 43200, zipcode: 10004)

@@ -39,16 +39,19 @@ ActiveRecord::Schema.define(version: 20161123150829) do
   end
 
   create_table "runs", force: :cascade do |t|
-    t.float    "distance",                     null: false
-    t.time     "run_time",                     null: false
-    t.time     "run_pace",                     null: false
-    t.integer  "runner_id",                    null: false
+    t.float    "distance"
+    t.time     "run_time"
+    t.time     "run_pace"
+    t.integer  "runner_id",    null: false
     t.integer  "companion_id"
-    t.boolean  "is_solo",      default: true
-    t.boolean  "is_complete",  default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "run_date",     null: false
+    t.integer  "time",         null: false
+    t.integer  "zipcode"
+    t.integer  "mood_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["companion_id"], name: "index_runs_on_companion_id", using: :btree
+    t.index ["mood_id"], name: "index_runs_on_mood_id", using: :btree
     t.index ["runner_id"], name: "index_runs_on_runner_id", using: :btree
   end
 

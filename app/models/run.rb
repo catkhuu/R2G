@@ -3,5 +3,5 @@ class Run < ApplicationRecord
   belongs_to :companion, foreign_key: :companion_id, class_name: :User, optional: true
   has_one :runner_mood, through: :runner, source: :moods
 
-  validates :distance, :run_time, :run_pace, :runner_id, presence: true
+  validates :runner_id, :run_date, :time, :zipcode, presence: true
 end
