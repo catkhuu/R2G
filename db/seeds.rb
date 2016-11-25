@@ -1,7 +1,7 @@
-lindsay = User.create!(name: 'Lindsay Kelly', email: 'lindsay@mail.com', password: 'password', location: 'Brooklyn')
-matt = User.create!(name: 'Matt Critelli', email: 'matthew@mail.com', password: 'password', location: 'Brooklyn')
-miles = User.create!(name: 'Miles McSomething', email: 'runningmiles@mail.com', password: 'password', location: 'Financial District')
-meow = User.create!(name: 'Catherine Khuu', email: 'catherine@mail.com', password: 'password', location: 'The Heights')
+lindsay = User.create!(name: 'Lindsay Kelly', email: 'lindsay@mail.com', password: 'password', location: 'Brooklyn', password_confirmation: 'password')
+matt = User.create!(name: 'Matt Critelli', email: 'matthew@mail.com', password: 'password', location: 'Brooklyn', password_confirmation: 'password')
+miles = User.create!(name: 'Miles McSomething', email: 'runningmiles@mail.com', password: 'password', location: 'Financial District', password_confirmation: 'password')
+meow = User.create!(name: 'Catherine Khuu', email: 'catherine@mail.com', password: 'password', location: 'The Heights', password_confirmation: 'password')
 
 seconds = 240
 pace = Time.at(seconds).utc.strftime('%H:%M:%S')
