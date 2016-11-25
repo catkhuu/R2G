@@ -1,4 +1,5 @@
 <h2> Running Moods: </h2>
+<!-- <div class=container> -->
 <% if @moods.empty? %>
   <p> You haven't added any running moods yet!  Add some below so we can better match you with running companions! </p>
 <% else %>
@@ -22,6 +23,11 @@
   </div>
   <% end %>
 <% end %>
+<!-- </div> -->
 
-<%= link_to "Add New Mood", new_user_mood_path(current_user) %>
+<div class=container>
+<%= link_to "Add New Mood", new_user_mood_path(current_user), :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
+</div>
+
+<!-- not set on the colors/styles so far, but I like materialize's card for displaying moods. open to other options -->
 
