@@ -1,0 +1,18 @@
+<h2> Running Moods: </h2>
+<% if @moods.empty? %>
+  <p> You haven't added any running moods yet!  Add some below so we can better match you with running companions! </p>
+<% else %>
+  <div class=container>
+  <% @moods.each do |mood| %>
+    <h4><%= mood.name %></h4>
+    <ul>
+      <li>Pace: <%= mood.mood_pace %></li>
+      <li>Experience Level: <%= mood.mood_experience %></li>
+      <li>Desired Distance: <%= mood.desired_distance %></li>
+    </ul>
+    <%= link_to 'Delete This Mood', user_mood_path(mood.user_id, mood), method: :delete, data: { confirm: 'Are you sure you want to delete this mood?' } %>
+  <% end %>
+</div>
+<% end %>
+
+<%= link_to "Add New Mood", new_user_mood_path(current_user) %>

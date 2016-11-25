@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
     # debugger
     # @profile.user = current_user
     if @profile.save
-      redirect_to user_profile_path(current_user, @profile)
+      redirect_to user_profile_path(@profile.user_id, @profile)
     else
       render 'new'
     end
