@@ -22,9 +22,12 @@
         <img src="">
       </div>
     <% if logged_in? %>
-      <a href="#!user"><img class="circle" src=""></a>
-      <p><%= current_user.name %></p>
+      <% if current_user.profile.avatar != nil %>
+        <%= image_tag current_user.profile.avatar.url(:thumb) %>
+      <% end %>
+      <%= link_to current_user.name , user_profile_path(current_user, current_user.profile) %>
       <p><%= current_user.email %></p>
+
     </div></li>
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "The Rundown", user_path(current_user) %></li>

@@ -7,7 +7,6 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    # debugger
     # @profile.user = current_user
     if @profile.save
       redirect_to user_profile_path(@profile.user_id, @profile)
@@ -25,7 +24,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    # debugger
     @profile = Profile.find_by(user_id:[current_user.id])
     if @profile.update(profile_params)
       redirect_to user_profile_path(@profile.user_id, @profile)
@@ -36,8 +34,9 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:why_i_run, :user_pace, :goals, :user_id, :experience, :need_to_knows)
+      params.require(:profile).permit(:why_i_run, :user_pace, :goals, :user_id, :experience, :need_to_knows, :avatar)
     end
+
 
     def sanitize_profile_params
       # params['profile']['experience'] = params['experience']
