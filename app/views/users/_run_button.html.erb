@@ -1,5 +1,5 @@
-<div class=container>
-<%= link_to "Start New Run", new_user_mood_path(current_user), :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
+<div class="container" id="new-run-container">
+<%= link_to "Start New Run", new_user_run_path(current_user), :class => "waves-effect waves-light btn #00acc1 cyan darken-1", id: 'start-new-run-btn' %>
 </div>
 
 <!-- if any of @user's runs are not complete (!is_complete)

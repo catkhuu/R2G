@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container new-run-form" id="new-run-form">
   <h2>Plan a new run</h2>
 
-  <%= form_for :run, url: user_runs_path(@user) do |f| %>
+  <%= form_for :run, class: 'run-form-inputs', url: user_runs_path(current_user) do |f| %>
     Select a date: <%= f.text_field :run_date, class: "datepicker"%>
 
     Select hour: <%= f.select :run_hours, (1..12).map { |hour| hour }%> <br />
@@ -18,7 +18,7 @@
       </select>
     <br />
 
-    <%= f.submit "Find a partner", :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
+    <%= f.submit "Find a partner", :class => "waves-effect waves-light btn #00acc1 cyan darken-1", id: "find-partner-btn" %>
 
   <% end %>
 </div>

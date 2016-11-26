@@ -11,4 +11,16 @@ module RunHelper
     [(user_coord[0] + result_coord[0]) / 2 , (user_coord[1] + result_coord[1]) / 2 ]
   end
 
+  def retrive_zipcodes_within_radius(run_zipcode)
+    api_key = "" #will need to store api key as ENV
+    url = "http://www.zipcodeapi.com/rest/#{api_key}/radius.json/#{run_zipcode}/2/mile"
+    response = Unirest.get(url, headers: {}, parameters: {})
+    nearby_zips = {}
+    response.body['zip_codes'].each { |zip, distance| nearby_zips[zip['zip_code']] = zip['distance'] }
+    convert_to_int = Hash[nearby_zips.map { |z,d| [z.to_i, d.to_i] }]
+  end
+
+  def nearby_runs(zipcodes)
+    Run.where(zipcode: zipcodes.keys)
+  end
 end

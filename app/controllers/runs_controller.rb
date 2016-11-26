@@ -3,17 +3,20 @@ class RunsController < ApplicationController
   before_action :sanitize_params, only: [:create, :update]
 
   def new
-    p params
     @run = Run.new
+    render partial: 'users/run_info', layout: false, locals: { run: @run }
   end
 
   def create
-    binding.pry
     run = Run.new(run_params)
     if run.save
-      p "Run saved"
+      zipcode_list = retrieve_zipcodes_within_radius(run.zipcode)
+      potential_runs = nearby_runs(zipcode_list)
+      
       flash[:success] = "Run saved."
       redirect_to user_profile_path(current_user, current_user.profile.id)
+
+
     else
       @errors = run.errors.full_messages
       render 'new'

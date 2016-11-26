@@ -1,15 +1,18 @@
 <h1>The Rundown</h1>
 
 <!-- This is a place holder to make navigation easier for us, it will NOT look like this eventually  -->
+<div class="rundown-container">
 
-<%= link_to "View Profile", user_profile_path(@user, @user.profile) %>
-<br>
-<%= link_to "Running Moods", user_moods_path(@user) %>
+  <%= link_to "View Profile", user_profile_path(@user, @user.profile) %>
+  <br>
+  <%= link_to "Running Moods", user_moods_path(@user) %>
 
-<%= render 'map' %>
+  <%= render 'map' %>
 
-<%= render 'run_button' %>
+  <%= render 'run_button' %>
+  <div class="run-form">
+  </div>
 
-<%= render 'run_info' %>
+  <%= render 'past_runs' %>
 
-<%= render 'past_runs' %>
+</div>
