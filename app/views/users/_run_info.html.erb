@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Plan a new run</h2>
+
+  <%= form_for :run, url: user_runs_path(@user) do |f| %>
+    Select a date: <%= f.text_field :run_date, class: "datepicker"%>
+
+    Select hour: <%= f.select :run_hours, (1..12).map { |hour| hour }%> <br />
+    Select minutes: <%= f.select :run_minutes, ['00', '15', '30', '45']%> <br />
+    Select morning or evening: <%= f.select :run_daypart, ['AM', 'PM'] %> <br />
+
+    Enter a zipcode: <%= f.number_field :zipcode %> <br />
+
+    Select a mood: <br /><br />
+      <select name="run[mood_id]">
+        <% current_user.moods.each do |mood| %>
+        <option value="<%= mood.id %>"><%= mood.name %></option>
+        <% end %>
+      </select>
+    <br />
+
+    <%= f.submit "Find a partner", :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
+
+  <% end %>
+</div>
