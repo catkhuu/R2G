@@ -1,24 +1,5 @@
-# README
+# Run2Gether
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app that seeks to connect runners in the area so they can *run together*.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A DBC Final Project built by [Catherine](https://github.com/catkhuu/), [Lindsay](https://github.com/lindsaymkelly/), [Matt](https://github.com/mattcritelli/), and [Miles](https://github.com/Kndekaru/).

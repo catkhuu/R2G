@@ -17,7 +17,10 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = current_user.profile
+    # @profile = current_user.profile
+    # debugger
+    user = User.find(params[:user_id])
+    @profile = user.profile
   end
 
   def edit
