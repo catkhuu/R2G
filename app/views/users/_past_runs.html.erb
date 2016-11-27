@@ -5,23 +5,40 @@
     <table class='responsive-table highlight bordered'>
       <tr>
         <th>Run Date</th>
-        <th>Total Distance</th>
+        <th>Location</th>
         <th>Companion</th>
+        <th>Overall Distance</th>
+        <th>Overall Time</th>
         <th>Average Pace</th>
       </tr>
       <% @user.runs.each do |run| %>
       <tr>
-        <td><%= run.created_at %></td>
-        <td><%= run.distance %></td>
+        <td><%= run.run_date %></td>
+        <td><%= run.zipcode %></td>
         <% if run.companion %>
-          <td>Companion: <%= run.companion.name %></td>
+          <td><%= run.companion.name %></td>
         <% else %>
-          <td> Searching for  </td>
+          <td> Solo  </td>
         <% end %>
-        <td><%= run.run_pace %></td>
+        <% if run.distance %>
+          <td><%= run.distance %></td>
+        <% else %>
+          <td> </td>
+        <% end %>
+        <% if run.run_time %>
+          <td><%= run.run_time %></td>
+        <% else %>
+          <td> </td>
+        <% end %>
+        <% if run.run_pace %>
+          <td><%= run.run_pace %></td>
+        <% else %>
+          <td> </td>
+        <% end %>
       <% end %>
     </table>
   </div>
 <% else %>
   <p> You haven't had any runs yet! </p>
 <% end %>
+

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    binding.pry
+    # binding.pry
     runs_by_date = @user.runs.where("run_date >= ?", DateTime.now)
     results = {}
     runs_by_date.each { |run| results[run] = Time.at(run.time).utc.strftime('%H:%M:%S').in_time_zone("Eastern Time (US & Canada)") }
