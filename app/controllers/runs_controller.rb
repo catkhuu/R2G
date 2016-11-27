@@ -33,7 +33,6 @@ class RunsController < ApplicationController
   end
 
   def upvotes
-    companions_run = Run.where(companion_id: params[:companion_id], run_date: @run.date, time: @run.time)
     if @run.update(companion_id: params[:companion_id])
       if companions_run.companion_id != nil && companions_run.companion_id == current_user.id
         render partial: "some partial", layout: false, locals: { whatever locals }
@@ -62,7 +61,11 @@ class RunsController < ApplicationController
   end
 
   def find_and_ensure_run
-    @run = current_user.runs.find_by(id: params[:id])
+    render 'application/error_404' unless @run = current_user.runs.find_by(id: params[:id])
+  end
+
+  def find_and_ensure_companions_run
+    companions_run = Run.where(companion_id: params[:companion_id], run_date: @run.date, time: @run.time)
   end
 
   def sanitize_params
