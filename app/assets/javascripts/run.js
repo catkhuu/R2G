@@ -24,7 +24,7 @@ $(function() {
       method: 'POST',
       data: data
     }).done(function(response) {
-      alert(response);
+      $('#table-upcoming-runs-body').append(response);
       $(form).parent().remove();
     })
 

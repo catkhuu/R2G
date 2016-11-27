@@ -11,7 +11,7 @@
     <tbody id="table-upcoming-runs-body">
     <% if !@upcoming_runs.nil? %>
       <% @upcoming_runs.each do |run| %>
-      <%= render partial: 'runs/runs', layout: false %>
+      <%= render partial: 'runs/run', layout: false, locals: { run: run } %>
     <% end %>
     </tbody>
   </table>

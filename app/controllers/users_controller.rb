@@ -21,7 +21,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @upcoming_runs = @user.runs.where("run_date >= ? AND time >= ?", DateTime.now, DateTime.now)
+    binding.pry
+    runs_by_date = @user.runs.where("run_date >= ?", DateTime.now)
+    results = {}
+    runs_by_date.each { |run| results[run] = Time.at(run.time).utc.strftime('%H:%M:%S').in_time_zone("Eastern Time (US & Canada)") }
+    @upcoming_runs = results.select { |k, v| v < DateTime.now }.keys #this might have to be reversed with the greater_than or less_than operator
   end
 
   def edit

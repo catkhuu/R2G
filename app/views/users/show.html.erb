@@ -14,7 +14,7 @@
   </div>
 
   <div class='upcoming-runs-list'>
-    <%= render partial: 'runs/runs_show', layout: false, locals: {} %>
+    <%= render partial: 'runs/runs_show', layout: false, locals: { upcoming_runs: @upcoming_runs } %>
   </div>
 
   <%= render 'past_runs' %>

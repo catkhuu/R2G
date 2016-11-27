@@ -8,15 +8,14 @@ class RunsController < ApplicationController
   end
 
   def create
-    run = Run.new(run_params)
-    if run.save
-      zipcode_list = retrieve_zipcodes_within_radius(run.zipcode)
-      matchers = search_by_date_time(zipcode_list, run)
-
+    @run = Run.new(run_params)
+    if @run.save
+      zipcode_list = retrieve_zipcodes_within_radius(@run.zipcode)
+      matchers = search_by_date_time(zipcode_list, @run)
+      binding.pry
       flash[:success] = "Run saved."
-      redirect_to user_profile_path(current_user, current_user.profile.id)
-
-
+      render partial: 'runs/run', layout: false, locals: { run: @run }
+      # redirect_to user_profile_path(current_user, current_user.profile.id)
     else
       @errors = run.errors.full_messages
       render 'new'
