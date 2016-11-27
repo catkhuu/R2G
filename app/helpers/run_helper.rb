@@ -23,4 +23,9 @@ module RunHelper
   def nearby_runs(zipcodes)
     Run.where(zipcode: zipcodes.keys)
   end
+
+  def search_by_date_time(zipcodes, run)
+    potential_runs = nearby_runs(zipcodes)
+    potential_runs.where(time: run.time, run_date: run.run_date)
+  end
 end

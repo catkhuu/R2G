@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @upcoming_runs = @user.runs.where("run_date >= ? AND time >= ?", DateTime.now, DateTime.now)
   end
 
   def edit

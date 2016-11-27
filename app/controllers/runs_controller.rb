@@ -11,8 +11,8 @@ class RunsController < ApplicationController
     run = Run.new(run_params)
     if run.save
       zipcode_list = retrieve_zipcodes_within_radius(run.zipcode)
-      potential_runs = nearby_runs(zipcode_list)
-      
+      matchers = search_by_date_time(zipcode_list, run)
+
       flash[:success] = "Run saved."
       redirect_to user_profile_path(current_user, current_user.profile.id)
 
