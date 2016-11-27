@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123150829) do
+ActiveRecord::Schema.define(version: 20161126204847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,17 @@ ActiveRecord::Schema.define(version: 20161123150829) do
 
   create_table "profiles", force: :cascade do |t|
     t.text     "why_i_run"
-    t.time     "user_pace",     null: false
-    t.text     "goals",         null: false
-    t.string   "experience",    null: false
+    t.time     "user_pace",           null: false
+    t.text     "goals",               null: false
+    t.string   "experience",          null: false
     t.text     "need_to_knows"
-    t.integer  "user_id",       null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "user_id",             null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 

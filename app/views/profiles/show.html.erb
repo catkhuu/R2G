@@ -1,3 +1,4 @@
+<%= image_tag @profile.avatar.url(:medium) %>
 <div class = "container">
   <h2><%=@profile.user.name%>'s Profile </h2>
   <% if current_user == @profile.user %>

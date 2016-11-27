@@ -1,6 +1,7 @@
 <div class="container">
   <h1><%=current_user.name%>'s Profile</h1>
-  <%= form_for :profile, url: { action: "create" } do |f| %>
+  <%= form_for :profile, url: { action: "create" }, html: { multipart: true }  do |f| %>
+    Avatar:<%= f.file_field :avatar %>
     Why I Run: <%= f.text_field :why_i_run, placeholder:"In a few words, tell us what motivates you and keeps you running!" %>
     Average Pace: <%= f.text_field :user_pace, placeholder: "Please tell us your average pace (minutes per mile)"%>
     Goals: <%= f.text_field :goals, placeholder: "In a few words, tell us your running goals!"%>

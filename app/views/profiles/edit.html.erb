@@ -1,6 +1,8 @@
 <h2> Edit Your Profile: </h2>
 <div class="container">
   <%= form_for :profile, url: user_profile_path(@profile.user_id, @profile), method: 'put' do |f| %>
+
+    Avatar: <%= f.file_field :avatar %>
     Why I Run: <%= f.text_field :why_i_run%>
     Average Pace: <%= f.text_field :user_pace%>
     Goals: <%= f.text_field :goals%>
