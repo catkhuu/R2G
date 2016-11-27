@@ -10,6 +10,7 @@ class CreateRuns < ActiveRecord::Migration[5.0]
       t.integer     :time, null: false
       t.integer    :zipcode
       t.references  :mood
+      t.boolean :reject, default: false
       t.timestamps(null: false)
     end
   end

@@ -1,0 +1,20 @@
+<h2>Upcoming Runs</h2>
+  <table id="upcoming_runs">
+     <thead>
+       <tr>
+           <th data-field="run_date">Date</th>
+           <th data-field="location">Location</th>
+           <th data-field="companion">Ran With</th>
+       </tr>
+     </thead>
+
+    <tbody id="table-upcoming-runs-body">
+    <% if !@upcoming_runs.nil? %>
+      <% @upcoming_runs.each do |run| %>
+      <%= render partial: 'runs/run', layout: false, locals: { run: run } %>
+    <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <p>You have no upcoming runs</p>
+  <% end %>

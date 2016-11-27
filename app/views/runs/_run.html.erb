@@ -1,0 +1,9 @@
+<tr>
+  <td><%= run.run_date %> </td>
+  <td><%= run.zipcode %></td>
+    <% if !run.companion.nil? %>
+      <td><%= run.companion.name %></td>
+    <% else %>
+      <td>still searching</td>
+    <% end %>
+</tr>

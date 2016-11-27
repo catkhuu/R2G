@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
+      flash[:success] = "You're almost there! Please tell us a little more about yourself." # This needs to be styled, otherwise, let's remove it
       redirect_to new_user_profile_path(user)
     else
       @errors = user.errors.full_messages
@@ -20,6 +21,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    binding.pry
+    runs_by_date = @user.runs.where("run_date >= ?", DateTime.now)
+    results = {}
+    runs_by_date.each { |run| results[run] = Time.at(run.time).utc.strftime('%H:%M:%S').in_time_zone("Eastern Time (US & Canada)") }
+    @upcoming_runs = results.select { |k, v| v < DateTime.now }.keys #this might have to be reversed with the greater_than or less_than operator
   end
 
   def edit
