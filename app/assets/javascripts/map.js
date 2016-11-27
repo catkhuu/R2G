@@ -10,6 +10,13 @@ function initMap() {
     title: 'a'
   });
 
+  // var midPointMarker = new google.maps.Marker({
+  //   position: get request?,
+  //   map: map,
+  //   options:{icon:"http://maps.google.com/mapfiles/marker_purple.png"},
+  //   title: 'b'
+  // });
+
   // var infoWindow = new google.maps.InfoWindow({map: map});
 
   // Try HTML5 geolocation.
