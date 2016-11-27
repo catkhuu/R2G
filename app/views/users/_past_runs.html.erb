@@ -10,6 +10,7 @@
         <th>Overall Distance</th>
         <th>Overall Time</th>
         <th>Average Pace</th>
+        <th> Edit </th>
       </tr>
       <% @user.runs.each do |run| %>
       <tr>
@@ -35,6 +36,7 @@
         <% else %>
           <td> </td>
         <% end %>
+        <td> <%= link_to "Edit This Run", user_run_edit_stats_path(run.runner_id, run.id) %></td>
       <% end %>
     </table>
   </div>

@@ -32,18 +32,18 @@ class RunsController < ApplicationController
   def update
   end
 
-  def upvotes
-    companions_run = Run.where(companion_id: params[:companion_id], run_date: @run.date, time: @run.time)
-    if @run.update(companion_id: params[:companion_id])
-      if companions_run.companion_id != nil && companions_run.companion_id == current_user.id
-        render partial: "some partial", layout: false, locals: { whatever locals }
-      else
-        render partial: "some partial with companion blurb", layout: false, locals: { some locals }
-      end
-    else
-      @errors = { error: "unable to update companion" }.to_json
-    end
-  end
+  # def upvotes
+  #   companions_run = Run.where(companion_id: params[:companion_id], run_date: @run.date, time: @run.time)
+  #   if @run.update(companion_id: params[:companion_id])
+  #     if companions_run.companion_id != nil && companions_run.companion_id == current_user.id
+  #       render partial: "some partial", layout: false, locals: { whatever locals }
+  #     else
+  #       render partial: "some partial with companion blurb", layout: false, locals: { some locals }
+  #     end
+  #   else
+  #     @errors = { error: "unable to update companion" }.to_json
+  #   end
+  # end
 
   # def declines
   #   @run.companion_id = nil #maybe update_attribute vs setting to nil
@@ -56,15 +56,23 @@ class RunsController < ApplicationController
   # end
 
   def edit_stats
-    @run = Run.find_by #???
+    @run = Run.find_by(id: params[:run_id])
   end
 
   def update_stats
-    @run = Run.find_by #???
-    if @run.update
+    @run = Run.find_by(id: params[:run_id])
+    if @run.update(stats_params)
+      redirect_to user_path(@run.runner_id)
+    else
+      render 'edit_stats'
+    end
   end
 
   private
+
+  def stats_params
+    params.require(:run).permit(:distance, :run_time, :run_pace)
+  end
 
   def run_params
     params.require(:run).permit(:run_date, :time, :zipcode, :mood_id, :runner_id)
