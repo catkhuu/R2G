@@ -1,0 +1,12 @@
+<h2> Edit Run Stats: </h2>
+<div class="container">
+  <%= form_for :run, url: user_run_path(@run.user_id, @run), method: 'put' do |f| %>
+    Run Date: <%= f.read_only_text_field :run_date %>
+    Location: <%= f.read_only_text_field :zipcode %>
+    Companion: <%= f.read_only_text_field :companion %>
+    Distance: <%= f.text_field :distance %>
+    Overall Time: <%= f.text_field :run_time%>
+    Average Pace: <%= f.text_field :run_pace%>
+    <%= f.submit "Update Run Stats", :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
+  <% end %>
+</div>

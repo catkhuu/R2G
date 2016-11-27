@@ -55,6 +55,15 @@ class RunsController < ApplicationController
   #   end
   # end
 
+  def edit_stats
+    @run = Run.find_by #???
+  end
+
+  def update_stats
+    @run = Run.find_by #???
+    if @run.update
+  end
+
   private
 
   def run_params
