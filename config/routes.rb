@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "/pages/:page" => "pages#show"
-  resources :users, except: [:index, :destroy] do
+  resources :users, except: [:destroy] do
     resources :profiles, except: [:index, :destroy]
     resources :moods, except: [:show]
     resources :runs
