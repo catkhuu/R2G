@@ -33,26 +33,26 @@ class RunsController < ApplicationController
   end
 
   def upvotes
+    #might have to pass run_id instead because time, date, and runner_id currently is not unique
+    companions_run = Run.where(runner_id: params[:companion_id], run_date: @run.run_date, time: @run.time).limit(1).first
     if @run.update(companion_id: params[:companion_id])
-      if companions_run.companion_id != nil && companions_run.companion_id == current_user.id
-        render partial: "some partial", layout: false, locals: { whatever locals }
+      if companions_run.companion_id == current_user.id
+        render partial: "some partial with map", layout: false, locals: { whatever locals }
       else
-        render partial: "some partial with companion blurb", layout: false, locals: { some locals }
+        render partial: "some partial with companion blurb and send pending view to corresponding runner", layout: false, locals: { some locals }
       end
     else
       @errors = { error: "unable to update companion" }.to_json
     end
   end
 
-  # def declines
-  #   @run.companion_id = nil #maybe update_attribute vs setting to nil
-  #   companions_run = Run.where(companion_id: params[:companion_id], run_date: @run.date, time: @run.time)
-  #   if @run.save
-  #     puts 'some success message for US'
-  #   else
-  #     @errors = { error: 'decline unsuccessful' }.to_json
-  #   end
-  # end
+  def declines
+    if companions_run = current_user.runs_as_companion.where(id: params[:run_id]).update(reject: true, companion_id: nil)
+      puts 'some success message for US'
+    else
+      @errors = { error: 'decline unsuccessful' }.to_json
+    end
+  end
 
   private
 
@@ -62,10 +62,6 @@ class RunsController < ApplicationController
 
   def find_and_ensure_run
     render 'application/error_404' unless @run = current_user.runs.find_by(id: params[:id])
-  end
-
-  def find_and_ensure_companions_run
-    companions_run = Run.where(companion_id: params[:companion_id], run_date: @run.date, time: @run.time)
   end
 
   def sanitize_params
