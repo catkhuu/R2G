@@ -52,6 +52,6 @@ class UsersController < ApplicationController
     end
 
     def find_midpoint(user_coord, result_coord)
-      midpoint = [([user_coord[0] + result_coord[0]) / 2 , (user_coord[1] + result_coord[1]) / 2 ]
+      midpoint = [(user_coord[0] + result_coord[0]) / 2 , (user_coord[1] + result_coord[1]) / 2 ]
     end
 end
