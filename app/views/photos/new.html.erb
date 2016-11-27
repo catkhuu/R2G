@@ -1,0 +1,18 @@
+<div class="page-header"><h1>Upload Photo</h1></div>
+
+<%= form_for :photo, url: { action: "create" } do |f| %>
+  <%= render 'shared/errors', object: @photo %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+     <% f.hidden_field :image, :value => current_user.id %>
+
+  <div class="form-group">
+    <%= f.label :Image %>
+    <%= f.file_field :image, class: 'form-control'%>
+  </div>
+
+  <%= f.submit 'Upload', class: 'btn btn-primary' %>
+<% end %>
