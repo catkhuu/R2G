@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126204847) do
+ActiveRecord::Schema.define(version: 20161128065742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,13 +34,16 @@ ActiveRecord::Schema.define(version: 20161126204847) do
     t.float    "distance"
     t.time     "run_time"
     t.time     "run_pace"
-    t.integer  "runner_id",    null: false
+    t.integer  "runner_id",        null: false
     t.integer  "companion_id"
-    t.string   "run_date",     null: false
-    t.integer  "time",         null: false
+    t.string   "run_date",         null: false
+    t.integer  "time",             null: false
     t.integer  "zipcode"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.float    "latitude",         null: false
+    t.float    "longitude",        null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.float    "desired_distance"
     t.index ["companion_id"], name: "index_runs_on_companion_id", using: :btree
     t.index ["runner_id"], name: "index_runs_on_runner_id", using: :btree
   end
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 20161126204847) do
     t.string   "name",            null: false
     t.string   "email",           null: false
     t.string   "password_digest", null: false
-    t.integer  "location",        null: false
+    t.integer  "zipcode",         null: false
     t.float    "latitude",        null: false
     t.float    "longitude",       null: false
     t.datetime "created_at",      null: false

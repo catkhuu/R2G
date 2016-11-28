@@ -3,10 +3,9 @@
   <h2><%=@profile.user.name%>'s Profile </h2>
   <% if current_user == @profile.user %>
     <p>Email Address: <%=@profile.user.email%></p>
-    <p>Location: <%=@profile.user.location%></p>
+    <p>Location: <%=@location%></p>
   <% end %>
   <p>Why I Run: <%=@profile.why_i_run%></p>
-  <p>Average Pace: <%=@profile.user_pace%></p>
   <p>Goals: <%=@profile.goals%></p>
   <p>Experience Level: <%=@profile.experience%></p>
   <p>Need To Knows: <%=@profile.need_to_knows%></p>

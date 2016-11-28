@@ -5,7 +5,7 @@
   <%= render partial: 'application/errors', layout: false, locals: { errors: @errors } %>
     Name: <%= f.text_field :name, placeholder:"My friends call me..." %>
     Email: <%= f.text_field :email, placeholder: "Contact me at..."%>
-    Zip Code: <%= f.number_field :location, placeholder: "Where I run..."%>
+    Zip Code: <%= f.number_field :zipcode, placeholder: "Where I run..."%>
     Password: <%= f.password_field :password, placeholder: "Password" %>
     Confirm Password: <%= f.password_field :password_confirmation, placeholder: "One more time..." %>
     <%= f.submit "Sign Up", :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>

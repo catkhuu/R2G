@@ -20,7 +20,10 @@ module SessionsHelper
     end
   end
 
-  # redirect_back_or and store_location store the request path the user wanted to access before being redirected to login page if they were not logged in.
+  def correct_user
+    render 'application/error_404' unless current_user?
+  end
+
   def redirect_back_or(default)
     redirect_to(session[:forarding_url] || default)
     session.delete(:forarding_url)
