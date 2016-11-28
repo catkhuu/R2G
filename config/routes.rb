@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "/pages/:page" => "pages#show"
-  get '/runs/search/:preferences' => 'runs#search'
+  get '/runs/search' => 'runs#search'
   get '/runs/new_search' => 'runs#new_search'
   resources :users, except: [:index, :destroy] do
     resources :profiles, except: [:index, :destroy]
