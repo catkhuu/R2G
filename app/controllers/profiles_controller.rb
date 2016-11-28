@@ -1,4 +1,7 @@
 class ProfilesController < ApplicationController
+  include ProfilesHelper
+  before_action :logged_in_user, :find_and_ensure_user, :correct_user
+  before_action :find_and_ensure_profile, only: [:show, :edit, :update]
   before_action :sanitize_profile_params, only: [:create, :update]
 
   def new
@@ -7,7 +10,6 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    # @profile.user = current_user
     if @profile.save
       redirect_to user_profile_path(@profile.user_id, @profile)
     else
@@ -16,18 +18,13 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    # @profile = current_user.profile
-    # debugger
-    user = User.find(params[:user_id])
-    @profile = user.profile
+    @location = geocode_zip(@user)
   end
 
   def edit
-    @profile = Profile.find_by(user_id:[current_user.id])
   end
 
   def update
-    @profile = Profile.find_by(user_id:[current_user.id])
     if @profile.update(profile_params)
       redirect_to user_profile_path(@profile.user_id, @profile)
     else
@@ -37,12 +34,18 @@ class ProfilesController < ApplicationController
 
   private
     def profile_params
-      params.require(:profile).permit(:why_i_run, :user_pace, :goals, :user_id, :experience, :need_to_knows, :avatar)
+      params.require(:profile).permit(:why_i_run, :goals, :user_id, :experience, :need_to_knows, :avatar)
     end
 
+    def find_and_ensure_user
+      render 'application/error_404' unless @user = User.find_by(id: params[:user_id])
+    end
+
+    def find_and_ensure_profile
+      render 'application/error_404' unless @profile = current_user.profile
+    end
 
     def sanitize_profile_params
-      # params['profile']['experience'] = params['experience']
       params['profile']['user_id'] = current_user.id
     end
 end

@@ -1,22 +1,19 @@
-<h1>The Rundown</h1>
+<div id="rundown_container" class="rundown container center">
+  <h1>The Rundown</h1>
 
-<!-- This is a place holder to make navigation easier for us, it will NOT look like this eventually  -->
-<div class="rundown-container">
+  <div class="rundown-container">
 
-  <%= link_to "View Profile", user_profile_path(@user, @user.profile) %>
-  <br>
-  <%= link_to "Running Moods", user_moods_path(@user) %>
+    <%= render 'map' %>
 
-  <%= render 'map' %>
+    <%= render 'runs/run_search_button' %>
+    <div class="run-form">
+    </div>
 
-  <%= render 'run_button' %>
-  <div class="run-form">
+    <div class='upcoming-runs-list'>
+
+    </div>
+
+    <%= render 'past_runs' %>
+
   </div>
-
-  <div class='upcoming-runs-list'>
-    <%= render partial: 'runs/runs_show', layout: false, locals: { upcoming_runs: @upcoming_runs } %>
-  </div>
-
-  <%= render 'past_runs' %>
-
 </div>

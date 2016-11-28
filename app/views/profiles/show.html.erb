@@ -1,18 +1,23 @@
-<%= image_tag @profile.avatar.url(:medium) %>
-<div class = "container">
-  <h2><%=@profile.user.name%>'s Profile </h2>
-  <% if current_user == @profile.user %>
-    <p>Email Address: <%=@profile.user.email%></p>
-    <p>Location: <%=@profile.user.location%></p>
-  <% end %>
-  <p>Why I Run: <%=@profile.why_i_run%></p>
-  <p>Average Pace: <%=@profile.user_pace%></p>
-  <p>Goals: <%=@profile.goals%></p>
-  <p>Experience Level: <%=@profile.experience%></p>
-  <p>Need To Knows: <%=@profile.need_to_knows%></p>
-</div>
-<% if current_user == @profile.user %>
-  <div class = "container">
-    <%= link_to 'Edit Profile', edit_user_profile_path(current_user, @profile) %>
+<div class="profile-show container center">
+  <div row>
+    <div class="col s6 m6 l6">
+      <%= image_tag @profile.avatar.url(:medium), class: "circle responsive-image profile-pic-show-view" %>
+    </div>
   </div>
-<% end %>
+  <div class = "container">
+    <h2><%=@profile.user.name%>'s Profile </h2>
+    <% if current_user == @profile.user %>
+      <p>Email Address: <%=@profile.user.email%></p>
+      <p>Location: <%=@location%></p>
+    <% end %>
+    <p>Why I Run: <%=@profile.why_i_run%></p>
+    <p>Goals: <%=@profile.goals%></p>
+    <p>Experience Level: <%=@profile.experience%></p>
+    <p>Need To Knows: <%=@profile.need_to_knows%></p>
+  </div>
+  <% if current_user == @profile.user %>
+    <div class = "container">
+      <%= link_to 'Edit Profile', edit_user_profile_path(current_user, @profile) %>
+    </div>
+  <% end %>
+</div>

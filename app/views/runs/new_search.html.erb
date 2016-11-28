@@ -1,0 +1,24 @@
+<div class="new-search-form container center">
+  <div class="row">
+    <div class="col s8">
+      <h4>Search for a run</h4><br />
+      <%= form_for :run, url: '/runs/search', method: 'GET', id: 'search-form' do |f| %>
+          <div class="row">
+            <div class="col s6">
+              Select a date: <%= f.text_field :run_date, class: "datepicker" %>
+            </div>
+            <div class="col s6">
+              Enter a zipcode: <%= f.number_field :zipcode %>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col s4">Select hour: <%= f.select :run_hours, (1..12).map { |hour| hour } %></div>
+          <div class="col s4">Select minutes: <%= f.select :run_minutes, ['00', '15', '30', '45'] %></div>
+          <div class="col s4">Time of Day: <%= f.select :run_daypart, ['AM', 'PM'] %></div>
+        </div>
+
+        <%= f.submit "Find my Partner", :class => "waves-effect waves-light btn #00acc1 cyan darken-1", id: "find-partner-btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>

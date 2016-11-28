@@ -9,8 +9,9 @@ class CreateRuns < ActiveRecord::Migration[5.0]
       t.string   :run_date, null: false
       t.integer     :time, null: false
       t.integer    :zipcode
-      t.references  :mood
-      t.boolean :reject, default: false
+      t.float :latitude, null: false
+      t.float :longitude, null: false
+
       t.timestamps(null: false)
     end
   end

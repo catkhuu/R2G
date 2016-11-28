@@ -1,7 +1,9 @@
 class Run < ApplicationRecord
   belongs_to :runner, foreign_key: :runner_id, class_name: :User
-  belongs_to :companion, foreign_key: :companion_id, class_name: :User, optional: true, inverse_of: :runs_as_companion
-  has_one :runner_mood, through: :runner, source: :moods
+  belongs_to :companion, foreign_key: :companion_id, class_name: :User, optional: true
+  validates :runner_id, :run_date, :time, :zipcode, presence: true
+  geocoded_by :zipcode
+  after_validation :geocode
 
   def run_hours
   end
@@ -11,5 +13,5 @@ class Run < ApplicationRecord
 
   def run_daypart
   end
-  validates :runner_id, :run_date, :time, :zipcode, presence: true
+
 end

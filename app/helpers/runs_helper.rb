@@ -1,4 +1,4 @@
-module RunHelper
+module RunsHelper
   def convert_hours_to_seconds(params)
     (params.to_i)*3600
   end
@@ -27,6 +27,6 @@ module RunHelper
   def search_by_date_time(zipcodes, run)
     potential_runs = nearby_runs(zipcodes)
     runs = potential_runs.where(time: run.time, run_date: run.run_date)
-    runs.where.not(runner_id: current_user.id)  
+    runs.where.not(runner_id: current_user.id)
   end
 end

@@ -16,18 +16,21 @@
   </head>
 
   <body>
-    <ul id="slide-out" class="side-nav">
+    <ul id="slide-out" class="side-nav fixed">
     <li><div class="userView">
       <div class="background">
         <img src="">
       </div>
     <% if logged_in? %>
     <% if current_user.profile != nil %>
-      <%= image_tag current_user.profile.avatar.url(:thumb) %>
-      <%= link_to current_user.name , user_profile_path(current_user, current_user.profile) %>
+      <div class="container profile-pic">
+        <%= image_tag current_user.profile.avatar.url(:thumb), class: "circle profile-pic"%>
+      </div><br />
+
+      <%= link_to current_user.name , user_profile_path(current_user, current_user.profile), class: "container center" %>
     <% end %>
 
-      <p><%= current_user.email %></p>
+      <p class="container center"><%= current_user.email %></p>
 
     </div></li>
       <li><%= link_to "Home", root_path %></li>
@@ -42,17 +45,10 @@
 
   </ul>
 
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+  <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
     <div class="notice"><%= flash[:success] %></div>
     <div class="alert"><%= flash[:danger] %></div>
     <%= yield %>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
   </head>
   <body>
     <div id="map"></div>

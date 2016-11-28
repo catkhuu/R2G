@@ -1,6 +1,5 @@
 require 'unirest'
 class UsersController < ApplicationController
-    before_action :geocode_zip, only: [:create, :update]
     before_action :logged_in_user, :find_and_ensure_user, only: [:show, :edit, :update]
     before_action :correct_user, only: [:show, :edit, :update]
 
@@ -21,11 +20,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    binding.pry
-    runs_by_date = @user.runs.where("run_date > ?", DateTime.now)
-    results = {}
-    runs_by_date.each { |run| results[run] = Time.at(run.time).utc.strftime('%H:%M:%S').in_time_zone("Eastern Time (US & Canada)") } #can we find the differnce between the date that line 27 returns and add the difference to the time objects? 
-    @upcoming_runs = results.select { |k, v| v < DateTime.now }.keys #this might have to be reversed with the greater_than or less_than operator
+    # binding.pry
+    # runs_by_date = @user.runs.where("run_date > ?", DateTime.now)
+    # results = {}
+    # runs_by_date.each { |run| results[run] = Time.at(run.time).utc.strftime('%H:%M:%S').in_time_zone("Eastern Time (US & Canada)") } #can we find the differnce between the date that line 27 returns and add the difference to the time objects?
+    # @upcoming_runs = results.select { |k, v| v < DateTime.now }.keys #this might have to be reversed with the greater_than or less_than operator
   end
 
   def edit
@@ -41,18 +40,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :location, :password, :password_confirmation)
-    end
-
-    def correct_user
-      render 'application/error_404' unless current_user?
-    end
-
-    def geocode_zip
-      url = "http://maps.googleapis.com/maps/api/geocode/json?"
-      parameters = { address: params[:user][:location], sensor: 'true' }
-      response = Unirest.get(url, headers: {}, parameters: parameters)
-      params[:user][:location] = response.body['results'][0]['address_components'][1]['short_name']
+      params.require(:user).permit(:name, :email, :zipcode, :latitude, :longitude, :password, :password_confirmation)
     end
 
     def find_midpoint(user_coord, result_coord)

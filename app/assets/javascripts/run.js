@@ -1,36 +1,38 @@
 $(function() {
-
-  $('.rundown-container').on('click', '#start-new-run-btn', function(event) {
+  $('#new-run-container').on('click', '#search-for-run-btn', function(event) {
     event.preventDefault();
-    var $startButton = $(this);
-    var route = $(this).attr('href');
+    var $searchBtn = $(this);
+    var route = $searchBtn.attr('href');
     $.ajax({
       url: route,
       method: 'GET'
     }).done(function(response) {
-      $('.run-form').append(response);
+      $('div.run-form').append(response);
       enableMaterialize();
-      $startButton.hide();
+      hideButtons();
     })
   });
 
-  $('.rundown-container').on('click', '#find-partner-btn', function(event) {
+  $('#rundown_container').on('click', '#find-partner-btn', function(event) {
     event.preventDefault();
-    var form = $(this).closest('form');
-    var data = $(form).serialize();
-    var route = $(form[0]).attr('action');
+    var $searchForm = $(this);
+    var data = $searchForm.parent().serialize();
+    var route = $searchForm.parent().attr('action');
+    var method = $searchForm.parent().attr('method');
     $.ajax({
       url: route,
-      method: 'POST',
+      type: method,
       data: data
     }).done(function(response) {
-      $('#table-upcoming-runs-body').append(response);
-      $(form).parent().remove();
+      alert(response);
     })
-
-
   })
 });
+
+function hideButtons() {
+  $('#start-new-run-btn').hide();
+  $('#search-for-run-btn').hide();
+}
 
 function enableMaterialize() {
   $('.datepicker').pickadate({

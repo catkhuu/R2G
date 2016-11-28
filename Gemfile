@@ -26,6 +26,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'react-rails'
 gem 'unirest'
 gem 'faker'
+gem 'geocoder'
+gem 'materialize-sass'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
